@@ -12,7 +12,7 @@ import com.persistent.esansad.R;
 /**
  * Created by ashwin_valento on 03-Feb-15.
  */
-public class Section2Fragment extends Fragment {
+public class NotificationFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
