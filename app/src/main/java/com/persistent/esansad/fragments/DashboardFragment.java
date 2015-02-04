@@ -42,7 +42,7 @@ public class DashboardFragment extends Fragment {
             //Add Header to card
             header.setTitle("Proposal "+i );
             card.addCardHeader(header);
-
+            card.setSwipeable(true);
             cards.add(card);
         }
         CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(),cards);
