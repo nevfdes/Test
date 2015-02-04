@@ -2,6 +2,7 @@ package com.persistent.esansad.data;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -71,7 +72,7 @@ public class MemberOfParliamentORM {
                     gender + " " + "TEXT" + COMMA_SEP +
                     mp_id + " " + "TEXT" + COMMA_SEP +
                     education_qualification + " " + "TEXT" + COMMA_SEP +
-                    constituency + " " + "TEXT" + COMMA_SEP +
+                    constituency + " " + "TEXT PRIMARY KEY" + COMMA_SEP +
 
                     Percent_of_utilisation_over_released + " " + "INTEGER" + COMMA_SEP +
                     questions + " " + "INTEGER" + COMMA_SEP +
@@ -143,7 +144,7 @@ public class MemberOfParliamentORM {
 
     private static final SimpleDateFormat _dateFormat = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
 
-    public static List<MemberOfParliament> getMP(Context context) {
+    public static List<MemberOfParliament> getAllMPs(Context context) {
         DatabaseWrapper databaseWrapper = new DatabaseWrapper(context);
         SQLiteDatabase database = databaseWrapper.getReadableDatabase();
 
@@ -166,6 +167,39 @@ public class MemberOfParliamentORM {
 
         return postList;
     }
+
+
+
+    public static MemberOfParliament getMP(String constituency,Context context) {
+        DatabaseWrapper databaseWrapper = new DatabaseWrapper(context);
+        SQLiteDatabase database = databaseWrapper.getReadableDatabase();
+
+        Cursor cursor = database.rawQuery("SELECT * FROM " + MemberOfParliamentORM.TABLE_NAME+" WHERE constituency="+constituency, null);
+
+        Log.i(TAG, "Loaded " + cursor.getCount() + " Posts...");
+        //List<MemberOfParliament> postList = new ArrayList<MemberOfParliament>();
+        MemberOfParliament memberOfParliament=null;
+        if(cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                 memberOfParliament= cursorToPost(cursor);
+        }
+
+        if(memberOfParliament== null)
+            throw new Resources.NotFoundException();
+
+
+
+            Log.i(TAG, "Posts loaded successfully.");
+        }
+
+        database.close();
+
+        return  memberOfParliament;
+    }
+
+
+
 
     /**
      * Populates a Post object with data from a Cursor

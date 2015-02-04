@@ -16,6 +16,11 @@ public class APIHelper {
         MemberOfParliament mp= new MemberOfParliament();
         //check in db
 
+        MemberOfParliamentORM memberOfParliamentORM= new MemberOfParliamentORM();
+
+
+
+
 
         //call
         return null;
