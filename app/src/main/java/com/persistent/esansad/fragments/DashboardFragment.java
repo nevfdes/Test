@@ -1,9 +1,9 @@
 package com.persistent.esansad.fragments;
 
 import android.graphics.Color;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +20,10 @@ import java.util.ArrayList;
 
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
+import it.gmariotti.cardslib.library.internal.CardExpand;
 import it.gmariotti.cardslib.library.internal.CardHeader;
 import it.gmariotti.cardslib.library.view.CardListView;
+import it.gmariotti.cardslib.library.view.CardViewNative;
 
 /**
  * Created by ashwin_valento on 03-Feb-15.
@@ -36,10 +38,34 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
-
+        displayMPCard();
         initPieChart();
         displayCards();
        // super.onViewCreated(view, savedInstanceState);
+
+    }
+
+    private void displayMPCard() {
+
+        //Create a Card
+        Card card = new Card(getActivity());
+        CardExpand expand = new CardExpand(getActivity());
+
+        //Set inner title in Expand Area
+        expand.setTitle("MP card information");
+
+        //Add expand to a card
+        card.addCardExpand(expand);
+        //Create a CardHeader
+        CardHeader header = new CardHeader(getActivity());
+        header.setButtonExpandVisible(true);
+        //Add Header to card
+        card.addCardHeader(header);
+
+        //Set card in the cardView
+        CardViewNative cardView = (CardViewNative) getActivity().findViewById(R.id.mp_header);
+
+        cardView.setCard(card);
 
     }
 
@@ -51,8 +77,21 @@ public class DashboardFragment extends Fragment {
             //Create a Card
             CustomCard card = new CustomCard(getActivity());
 
+
+
+            //CARD ID + PROPOSAL ID
+            card.setId(String.valueOf(i));
+
+            CardExpand expand = new CardExpand(getActivity());
+
+            //Set inner title in Expand Area
+            expand.setTitle(i+ "More details");
+
+            //Add expand to a card
+            card.addCardExpand(expand);
             //Create a CardHeader
             CardHeader header = new CardHeader(getActivity());
+            header.setButtonExpandVisible(true);
             //Add Header to card
             header.setTitle("Proposal "+i );
             card.addCardHeader(header);
@@ -60,6 +99,8 @@ public class DashboardFragment extends Fragment {
             cards.add(card);
         }
         CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(),cards);
+
+        mCardArrayAdapter.setEnableUndo(true);
 
         CardListView listView = (CardListView) getActivity().findViewById(R.id.myList);
         if (listView!=null){
