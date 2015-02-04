@@ -21,6 +21,7 @@ import br.liveo.navigationliveo.NavigationLiveo;
  */
 public class MainActivity extends NavigationLiveo implements NavigationLiveoListener {
 
+    private static final int DEFAULT_POSITION = 0;
 
     @Override
     public void onUserInformation() {
@@ -66,7 +67,7 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         //If not please use the FooterDrawer use the setFooterVisible(boolean visible) method with value false
         this.setFooterInformationDrawer(R.string.action_settings, R.drawable.ic_drawer);
         this.setNavigationAdapter(mListNameItem, mListIconItem, mListHeaderItem, mSparseCounterItem);
-        this.setDefaultStartPositionNavigation(0);
+        this.setDefaultStartPositionNavigation(DEFAULT_POSITION);
     }
 
     @Override

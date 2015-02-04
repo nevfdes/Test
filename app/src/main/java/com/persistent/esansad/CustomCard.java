@@ -12,7 +12,7 @@ import it.gmariotti.cardslib.library.internal.Card;
 /**
  * Created by ashwin_valento on 03-Feb-15.
  */
-public class CustomCard extends Card {
+public class CustomCard extends Card{
 
     private Context context;
     protected TextView header;
