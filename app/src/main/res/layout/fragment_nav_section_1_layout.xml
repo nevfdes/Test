@@ -3,13 +3,13 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+<!--    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Fragment 1"
+        android:text="Dashboard"
         android:layout_gravity="center"
-        android:id="@+id/textView" />
+        android:id="@+id/textView" />-->
 
     <it.gmariotti.cardslib.library.view.CardListView
         android:layout_width="match_parent"

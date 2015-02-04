@@ -1,17 +1,14 @@
 package com.persistent.esansad;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.SparseIntArray;
 import android.view.Menu;
 import android.view.View;
-import android.widget.ImageView;
 
-import com.persistent.esansad.fragments.Section1Fragment;
-import com.persistent.esansad.fragments.Section2Fragment;
-import com.persistent.esansad.fragments.Section3Fragment;
+import com.persistent.esansad.fragments.DashboardFragment;
+import com.persistent.esansad.fragments.NotificationFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +25,8 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
     @Override
     public void onUserInformation() {
         //User information here
-        this.mUserName.setText("Ashwin Valento");
-        this.mUserEmail.setText("ashwinvalento@gmail.com");
+        this.mUserName.setText("User 1");
+        this.mUserEmail.setText("user1@gmail.com");
         this.mUserPhoto.setImageResource(R.drawable.ic_rudsonlive);
         this.mUserBackground.setImageResource(R.drawable.ic_user_background);
 
@@ -41,17 +38,15 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
 
     @Override
     public void onInt(Bundle bundle) {
-//Creation of the list items is here
+        //Creation of the list items is here
 
         // set listener {required}
         this.setNavigationListener(this);
 
         // name of the list items
         List<String> mListNameItem = new ArrayList<>();
-        mListNameItem.add(0, "Section 1");
-        mListNameItem.add(1, "Section 2");
-        mListNameItem.add(2, "Section 3");
-
+        mListNameItem.add(0, getResources().getString(R.string.title_section1));
+        mListNameItem.add(1,  getResources().getString(R.string.title_section2));
 
         // icons list items
         List<Integer> mListIconItem = new ArrayList<>();
@@ -66,7 +61,7 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
 
         //{optional} - Among the names there is any item counter, you must indicate it (position) and the value here
         SparseIntArray mSparseCounterItem = new SparseIntArray(); //indicate all items that have a counter
-        mSparseCounterItem.put(0, 123);   // appears next to section 1
+        mSparseCounterItem.put(1, 123);   // appears next to section 1
 
         //If not please use the FooterDrawer use the setFooterVisible(boolean visible) method with value false
         this.setFooterInformationDrawer(R.string.action_settings, R.drawable.ic_drawer);
@@ -82,13 +77,10 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
 
         switch (position){
             case 0:
-                fragment = new Section1Fragment();
+                fragment = new DashboardFragment();
                 break;
             case 1:
-                fragment = new Section2Fragment();
-                break;
-            case 2:
-                fragment = new Section3Fragment();
+                fragment = new NotificationFragment();
                 break;
         }
 
@@ -96,8 +88,6 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         fragmentManager.beginTransaction()
                 .replace(R.id.container, fragment)
                 .commit();
-
-
     }
 
     @Override

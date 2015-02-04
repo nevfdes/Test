@@ -20,21 +20,17 @@ import it.gmariotti.cardslib.library.view.CardListView;
 /**
  * Created by ashwin_valento on 03-Feb-15.
  */
-public class Section1Fragment extends Fragment {
+public class DashboardFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.fragment_nav_section_1_layout,container,false);
-
-
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
-
-        super.onViewCreated(view, savedInstanceState);
+       // super.onViewCreated(view, savedInstanceState);
         ArrayList<Card> cards = new ArrayList<>();
 
         for (int i=0;i<10;i++) {
@@ -44,7 +40,7 @@ public class Section1Fragment extends Fragment {
             //Create a CardHeader
             CardHeader header = new CardHeader(getActivity());
             //Add Header to card
-            header.setTitle("card "+i );
+            header.setTitle("Proposal "+i );
             card.addCardHeader(header);
 
             cards.add(card);
