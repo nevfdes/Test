@@ -1,5 +1,6 @@
 package com.persistent.esansad.fragments;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,9 +12,11 @@ import com.persistent.esansad.CustomCard;
 import com.persistent.esansad.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import it.gmariotti.cardslib.library.internal.Card;
 import it.gmariotti.cardslib.library.internal.CardArrayAdapter;
+import it.gmariotti.cardslib.library.internal.CardExpand;
 import it.gmariotti.cardslib.library.internal.CardHeader;
 import it.gmariotti.cardslib.library.view.CardListView;
 
@@ -45,10 +48,13 @@ public class Section1Fragment extends Fragment {
             CardHeader header = new CardHeader(getActivity());
             //Add Header to card
             header.setTitle("card "+i );
-            card.addCardHeader(header);
+            //card.addCardHeader(header);
+            card.setTitle("ExpandCard");
 
             cards.add(card);
         }
+
+
         CardArrayAdapter mCardArrayAdapter = new CardArrayAdapter(getActivity(),cards);
 
         CardListView listView = (CardListView) getActivity().findViewById(R.id.myList);
@@ -57,3 +63,6 @@ public class Section1Fragment extends Fragment {
         }
     }
 }
+
+
+

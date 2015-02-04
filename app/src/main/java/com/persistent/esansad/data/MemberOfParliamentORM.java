@@ -92,7 +92,7 @@ public class MemberOfParliamentORM {
 
 
 
-    public static void insertPost(Context context, MemberOfParliament mp) {
+    public static void insertMP(Context context, MemberOfParliament mp) {
         DatabaseWrapper databaseWrapper = new DatabaseWrapper(context);
         SQLiteDatabase database = databaseWrapper.getWritableDatabase();
 
@@ -185,8 +185,8 @@ public class MemberOfParliamentORM {
                  memberOfParliament= cursorToPost(cursor);
         }
 
-        if(memberOfParliament== null)
-            throw new Resources.NotFoundException();
+//        if(memberOfParliament== null)
+//            throw new Resources.NotFoundException();
 
 
 

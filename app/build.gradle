@@ -46,4 +46,9 @@ dependencies {
     //Material design Navigation bar
     compile 'it.neokree:MaterialNavigationDrawer:1.3'
 
+    //json handling library
+    compile 'com.google.code.gson:gson:2.2.4+'
+    //volley for making http requests
+    compile 'com.mcxiaoke.volley:library:1.0.+'
+
 }

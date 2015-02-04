@@ -32,15 +32,18 @@
        android:gravity="right"
        android:layout_weight="2">
        <ImageButton
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:src="@drawable/thumbs_up"
-           android:id="@+id/btnVoteUp" />
+           android:layout_width="70dp"
+           android:layout_height="70dp"
+
+           android:src="@drawable/upvote"
+           android:id="@+id/btnVoteUp"
+           android:scaleType="fitCenter" />
        <ImageButton
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
+           android:layout_width="70dp"
+           android:layout_height="70dp"
            android:id="@+id/btnVoteDown"
-           android:src="@drawable/thumbs_down"/>
+           android:src="@drawable/downvote"
+           android:scaleType="fitCenter" />
        </LinearLayout>
 
 
