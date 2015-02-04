@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.util.SparseIntArray;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.persistent.esansad.fragments.DashboardFragment;
 import com.persistent.esansad.fragments.NotificationFragment;
@@ -31,17 +32,20 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         this.mUserBackground.setImageResource(R.drawable.ic_user_background);
 
 
-//        View mCustomHeader = getLayoutInflater().inflate(R.layout.custom_header_user, this.getListView(), false);
-//        ImageView imageView = (ImageView) mCustomHeader.findViewById(R.id.imageView);
-//        this.addCustomHeader(mCustomHeader); //This will add the new header and remove the default user header
+     //   View mCustomHeader = getLayoutInflater().inflate(R.layout.custom_header_user, this.getListView(), false);
+    //    ImageView imageView = (ImageView) mCustomHeader.findViewById(R.id.imageView);
+   //     this.addCustomHeader(mCustomHeader); //This will add the new header and remove the default user header
     }
 
     @Override
     public void onInt(Bundle bundle) {
         //Creation of the list items is here
-
+        bundle = null;
         // set listener {required}
         this.setNavigationListener(this);
+
+        // to start from Navigation item 1
+        setDefaultStartPositionNavigation(0);
 
         // name of the list items
         List<String> mListNameItem = new ArrayList<>();
@@ -52,7 +56,7 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         List<Integer> mListIconItem = new ArrayList<>();
         mListIconItem.add(0, R.drawable.ic_drawer);
         mListIconItem.add(1, R.drawable.ic_drawer);
-        mListIconItem.add(2, R.drawable.ic_drawer);
+       // mListIconItem.add(2, R.drawable.ic_drawer);
 
 
         //{optional} - Among the names there is some subheader, you must indicate it here
@@ -67,6 +71,7 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         this.setFooterInformationDrawer(R.string.action_settings, R.drawable.ic_drawer);
 
         this.setNavigationAdapter(mListNameItem, mListIconItem, mListHeaderItem, mSparseCounterItem);
+
     }
 
     @Override
