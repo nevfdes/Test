@@ -15,8 +15,7 @@ import it.gmariotti.cardslib.library.internal.Card;
 public class CustomCard extends Card{
 
     private Context context;
-    protected TextView header;
-    protected TextView content;
+    protected TextView description;
     protected ImageButton thumbsUp;
     protected ImageButton thumbsDown;
 
@@ -25,7 +24,7 @@ public class CustomCard extends Card{
      * @param context is the context
      */
     public CustomCard(Context context) {
-        this(context, R.layout.custom_card_layout);
+        this(context, R.layout.proposals_card_layout);
         this.context = context;
     }
 
@@ -59,17 +58,13 @@ public class CustomCard extends Card{
     public void setupInnerViewElements(ViewGroup parent, View view) {
 
         //Retrieve elements
-        header = (TextView) parent.findViewById(R.id.tvHeader);
-        content = (TextView) parent.findViewById(R.id.tvContent);
+        description = (TextView) parent.findViewById(R.id.tvDescription);
         thumbsUp = (ImageButton) parent.findViewById(R.id.btnVoteUp);
         thumbsDown = (ImageButton) parent.findViewById(R.id.btnVoteDown);
 
 
-        if (header!=null)
-            header.setText("This is a header title");
-
-        if (content!=null)
-            content.setText("This is the content");
+        if (description !=null)
+            description.setText("This is the description");
 
         thumbsUp.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -31,7 +31,7 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         this.mUserBackground.setImageResource(R.drawable.ic_user_background);
 
 
-//        View mCustomHeader = getLayoutInflater().inflate(R.layout.custom_header_user, this.getListView(), false);
+//        View mCustomHeader = getLayoutInflater().inflate(R.layout.nav_drawer_header_user, this.getListView(), false);
 //        ImageView imageView = (ImageView) mCustomHeader.findViewById(R.id.imageView);
 //        this.addCustomHeader(mCustomHeader); //This will add the new header and remove the default user header
     }

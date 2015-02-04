@@ -1,5 +1,6 @@
 package com.persistent.esansad.fragments;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,6 +8,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
@@ -48,19 +51,28 @@ public class DashboardFragment extends Fragment {
     private void displayMPCard() {
 
         //Create a Card
-        Card card = new Card(getActivity());
+        MPHeaderCard card = new MPHeaderCard(getActivity());
         CardExpand expand = new CardExpand(getActivity());
-
         //Set inner title in Expand Area
         expand.setTitle("MP card information");
-
         //Add expand to a card
         card.addCardExpand(expand);
-        //Create a CardHeader
-        CardHeader header = new CardHeader(getActivity());
-        header.setButtonExpandVisible(true);
-        //Add Header to card
-        card.addCardHeader(header);
+
+
+
+        card.setOnClickListener(new Card.OnCardClickListener() {
+            @Override
+            public void onClick(Card card, View view) {
+                if(card.isExpanded()) {
+                    card.doCollapse();
+                }else{
+                    card.doExpand();
+                }
+            }
+        });
+
+
+
 
         //Set card in the cardView
         CardViewNative cardView = (CardViewNative) getActivity().findViewById(R.id.mp_header);
@@ -73,19 +85,27 @@ public class DashboardFragment extends Fragment {
     private void displayCards(){
         ArrayList<Card> cards = new ArrayList<>();
 
+        String proposaldescription = "this is a multi line description " +
+                "this is a multi line description " +
+                "this is a multi line description " +
+                "this is a multi line description " +
+                "this is a multi line description " +
+                "this is a multi line description " +
+                "this is a multi line description " +
+                "this is a multi line description " +
+                "this is a multi line description";
+
         for (int i=0;i<10;i++) {
             //Create a Card
             CustomCard card = new CustomCard(getActivity());
 
-
-
-            //CARD ID + PROPOSAL ID
+            //CARD ID = PROPOSAL ID
             card.setId(String.valueOf(i));
 
             CardExpand expand = new CardExpand(getActivity());
 
             //Set inner title in Expand Area
-            expand.setTitle(i+ "More details");
+            expand.setTitle(i+ " " + proposaldescription);
 
             //Add expand to a card
             card.addCardExpand(expand);
@@ -169,4 +189,48 @@ public class DashboardFragment extends Fragment {
         l.setXEntrySpace(7f);
         l.setYEntrySpace(5f);
     }
+
+    class MPHeaderCard extends Card {
+        protected TextView title;
+        protected TextView description;
+        protected ImageView profileImage;
+
+
+        public MPHeaderCard(Context context) {
+            this(context, R.layout.mp_header_layout);
+        }
+
+        public MPHeaderCard(Context context, int innerLayout) {
+            super(context, innerLayout);
+            init();
+        }
+
+
+        private void init(){
+
+        }
+
+        @Override
+        public void setupInnerViewElements(ViewGroup parent, View view) {
+
+            //Retrieve elements
+            title = (TextView) parent.findViewById(R.id.text_mp_title);
+            description = (TextView) parent.findViewById(R.id.text_mp_info);
+            profileImage = (ImageView) parent.findViewById(R.id.image_mp_photo);
+
+            if (title!=null)
+                title.setText("This is the name of the MP");
+
+            if (description!=null)
+                description.setText("This is the description for MP");
+
+            if (profileImage!=null)
+                profileImage.setImageDrawable(getResources().getDrawable(R.drawable.ic_rudsonlive));
+
+
+        }
+    }
+
+
+
 }
