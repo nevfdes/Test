@@ -21,7 +21,7 @@ import br.liveo.navigationliveo.NavigationLiveo;
  */
 public class MainActivity extends NavigationLiveo implements NavigationLiveoListener {
 
-
+    private static final int DEFAULT_POSITION = 0;
     @Override
     public void onUserInformation() {
         //User information here
@@ -42,7 +42,7 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
 
         // set listener {required}
         this.setNavigationListener(this);
-
+        this.setDefaultStartPositionNavigation(DEFAULT_POSITION);
         // name of the list items
         List<String> mListNameItem = new ArrayList<>();
         mListNameItem.add(0, getResources().getString(R.string.title_section1));
