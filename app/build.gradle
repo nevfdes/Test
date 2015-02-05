@@ -29,6 +29,8 @@ repositories {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.google.android.gms:play-services:6.5.87'
+
     compile 'com.android.support:appcompat-v7:21.0.3'
     //Core
     compile 'com.github.gabrielemariotti.cards:cardslib-core:2.+'
@@ -45,4 +47,6 @@ dependencies {
     //Material design Navigation bar
     compile 'br.com.liveo:navigationdrawer-material:1.0.3'
     compile 'org.quanqi:mpandroidchart:1.7.5'
+    // Ion library for assyncronous calls
+    compile 'com.koushikdutta.ion:ion:2.+'
 }

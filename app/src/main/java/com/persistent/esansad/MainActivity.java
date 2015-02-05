@@ -1,12 +1,15 @@
 package com.persistent.esansad;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.SparseIntArray;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
 
+import com.koushikdutta.ion.Ion;
 import com.persistent.esansad.fragments.DashboardFragment;
 import com.persistent.esansad.fragments.NotificationFragment;
 
@@ -38,6 +41,17 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
 
     @Override
     public void onInt(Bundle bundle) {
+
+
+        Intent i = getIntent();
+//        ImageView image = Ion.with((ImageView) viewImage)
+//                .resize(96, 96)
+//                .centerInside()
+//                .load("https://plus.google.com/s2/photos/profile/114432517923423045208?sz=96");
+        // set the user Info to navigation bar
+        this.mUserName.setText(i.getStringExtra("name"));
+        this.mUserEmail.setText(i.getStringExtra("email"));
+        //this.mUserPhoto.setImageResource();
         //Creation of the list items is here
 
         // set listener {required}
